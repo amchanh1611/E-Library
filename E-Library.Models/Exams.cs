@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using E_Library.Common.Enum;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace E_Library.Models
@@ -8,7 +9,7 @@ namespace E_Library.Models
     {
         [Key]
         public int ExamId { get; set; }
-        public byte? TypeFile { get; set; }
+        public ExamTypeFile? TypeFile { get; set; }
 
         [MaxLength(250)]
         public string? ExamName { get; set; }
@@ -18,13 +19,13 @@ namespace E_Library.Models
         [MaxLength(250)]
         public string? TeacherCreateExam { get; set; }
 
-        public bool? ExamType { get; set; }
+        public ExamType? ExamType { get; set; }
 
-        public byte? Time { get; set; }
+        public ExamTime? Time { get; set; }
 
-        public byte? Status { get; set; }
+        public ExamStatus? Status { get; set; }
 
-        public byte? Approve { get; set; }
+        public ExamApprove? Approve { get; set; }
 
         public DateTime? CreateDate { get; set; }
         public ICollection<Questions> Questions { get; set; }
