@@ -46,6 +46,7 @@ namespace E_Library.Repository.Repository
                         join s in _context.Subjects on d.SubjectId equals s.SubjectId
                         where s.SubjectName == Name
                         select new DocumentDTO { DateSend = d.DateSend, DocumentName = d.DocumentName, DocumentType = d.DocumentType, Status = d.Status, SubjectName = s.SubjectName, TeacherName = s.TeacherName };
+            // HELLO GITHUB
             return query.ToList();
         }
 
