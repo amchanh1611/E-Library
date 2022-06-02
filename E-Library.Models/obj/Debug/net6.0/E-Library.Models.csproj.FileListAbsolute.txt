@@ -1,0 +1,14 @@
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\bin\Debug\net6.0\E-Library.Models.deps.json
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\bin\Debug\net6.0\E-Library.Models.runtimeconfig.json
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\bin\Debug\net6.0\E-Library.Models.dll
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\bin\Debug\net6.0\E-Library.Models.pdb
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\E-Library.Models.csproj.AssemblyReference.cache
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\E-Library.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\E-Library.Models.AssemblyInfoInputs.cache
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\E-Library.Models.AssemblyInfo.cs
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\E-Library.Models.csproj.CoreCompileInputs.cache
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\E-Library.Models.dll
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\refint\E-Library.Models.dll
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\E-Library.Models.pdb
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\E-Library.Models.genruntimeconfig.cache
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library.Models\obj\Debug\net6.0\ref\E-Library.Models.dll
