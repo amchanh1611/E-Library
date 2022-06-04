@@ -1,4 +1,4 @@
-﻿namespace E_Library.DTO
+﻿namespace E_Library.DTO.Answer
 {
     public class AnswerDTO
     {

@@ -1,5 +1,4 @@
 ﻿using E_Library.DTO.Document;
-using E_Library.DTO.FunctionDTO;
 
 namespace E_Library.BUS.IBUS
 {
@@ -12,6 +11,7 @@ namespace E_Library.BUS.IBUS
         public List<DocumentComboboxStatusDTO> GetComboboxStatus();
 
         public List<DocumentComboboxSubjectDTO> GetComboboxSubject();
+
         public List<DocumentDTO> FillAndSearchDocument(FillAndSearchDocumentDTO fillAndSearchDocument);
     }
 }

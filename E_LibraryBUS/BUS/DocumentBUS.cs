@@ -1,6 +1,5 @@
 ﻿using E_Library.BUS.IBUS;
 using E_Library.DTO.Document;
-using E_Library.DTO.FunctionDTO;
 using E_Library.Repository.IRepository;
 
 namespace E_Library.BUS.BUS
@@ -22,7 +21,7 @@ namespace E_Library.BUS.BUS
             var subjects = _subjectRepository.GetAllSubject();
             var result = from d in documents
                          join s in subjects on d.SubjectId equals s.SubjectId
-                         select new DocumentDTO { DocumentType = d.DocumentType,DocumentName=d.DocumentName,SubjectName=s.SubjectName,TeacherName=s.TeacherName,Status=d.Status,DateSend=d.DateSend};
+                         select new DocumentDTO { DocumentType = d.DocumentType, DocumentName = d.DocumentName, SubjectName = s.SubjectName, TeacherName = s.TeacherName, Status = d.Status, DateSend = d.DateSend };
             return result.ToList();
         }
 
