@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LXu5lYUfwUC712H3okMxNWkVS9zWc8Z+2/20OkIZMGuadmm6oaZyZQd/MayaXqHq1ioWSt5Pgq694POrNPJiNA==",
+  "dgSpecHash": "FsizIESfqlbc8J0yf+2DIU9jquWWR+nncI+jvsAJobWc75o46L7clN7+dADiwqflhWzunxA5gG5s5LzT6BIDyQ==",
   "success": true,
-  "projectFilePath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_LibraryRepository\\E_Library.Repository.csproj",
+  "projectFilePath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_LibraryRepository\\E_Library.Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Minh Chanh\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.5\\microsoft.aspnetcore.jsonpatch.6.0.5.nupkg.sha512",
     "C:\\Users\\Minh Chanh\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.5\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.5.nupkg.sha512",

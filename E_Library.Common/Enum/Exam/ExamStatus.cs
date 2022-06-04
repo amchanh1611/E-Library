@@ -4,7 +4,7 @@
     {
         WaitApprove,
         NotStarted,
-        Happenning,
+        Processing,
         Conducted,
         Completed
     }

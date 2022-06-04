@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj": {}
+    "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj": {}
   },
   "projects": {
-    "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\E_Library.Common.csproj": {
+    "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\E_Library.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\E_Library.Common.csproj",
+        "projectUniqueName": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\E_Library.Common.csproj",
         "projectName": "E_Library.Common",
-        "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\E_Library.Common.csproj",
+        "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\E_Library.Common.csproj",
         "packagesPath": "C:\\Users\\Minh Chanh\\.nuget\\packages\\",
-        "outputPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\obj\\",
+        "outputPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -62,14 +62,14 @@
         }
       }
     },
-    "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj": {
+    "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj",
+        "projectUniqueName": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj",
         "projectName": "E_Library.DTO",
-        "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj",
+        "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj",
         "packagesPath": "C:\\Users\\Minh Chanh\\.nuget\\packages\\",
-        "outputPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.DTO\\obj\\",
+        "outputPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.DTO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -90,8 +90,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\E_Library.Common.csproj": {
-                "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\E_Library.Common.csproj"
+              "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\E_Library.Common.csproj": {
+                "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\E_Library.Common.csproj"
               }
             }
           }

@@ -14,13 +14,32 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//DbContext
+
 builder.Services.AddDbContext<E_LibraryDbContext>(option => option.UseSqlServer("Data Source=DESKTOP-9GO1A8E\\SQLEXPRESS;Initial Catalog=ELibrary;Integrated Security=True;User Id=sa;Password=Chanh@0101"));
+
+//Home
+
+builder.Services.AddTransient<IHomeBUS, HomeBUS>();
+
+//Subject
+
 builder.Services.AddTransient<ISubjectRepository, SubjectRepository>();
-builder.Services.AddTransient<IGetTotalSubject, GetTotalSubject>();
 builder.Services.AddTransient<ISubjectBUS, SubjectBUS>();
-builder.Services.AddTransient<ISubjectRepository, SubjectRepository>();
+
+//Document
+
 builder.Services.AddTransient<IDocumentBUS, DocumentBUS>();
 builder.Services.AddTransient<IDocumentRepository, DocumentRepository>();
+
+//Exam
+
+builder.Services.AddTransient<IExamRepository, ExamRepository>();
+builder.Services.AddTransient<IExamBUS, ExamBUS>();
+
+//Json
+
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(option => option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
 var app = builder.Build();

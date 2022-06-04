@@ -38,7 +38,6 @@ namespace E_Library.Models.Migrations
                     SubjectId = table.Column<int>(type: "int", nullable: true),
                     DateSend = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: true),
-                    Approve = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     SubjectsSubjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -58,14 +57,14 @@ namespace E_Library.Models.Migrations
                 {
                     ExamId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TypeFile = table.Column<byte>(type: "tinyint", nullable: true),
+                    TypeFile = table.Column<int>(type: "int", nullable: true),
                     ExamName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     SubjectId = table.Column<int>(type: "int", nullable: true),
                     TeacherCreateExam = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
-                    ExamType = table.Column<bool>(type: "bit", nullable: true),
-                    Time = table.Column<byte>(type: "tinyint", nullable: true),
-                    Status = table.Column<byte>(type: "tinyint", nullable: true),
-                    Approve = table.Column<byte>(type: "tinyint", nullable: true),
+                    ExamType = table.Column<int>(type: "int", nullable: true),
+                    Time = table.Column<int>(type: "int", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: true),
+                    Approve = table.Column<int>(type: "int", nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     SubjectsSubjectId = table.Column<int>(type: "int", nullable: false)
                 },

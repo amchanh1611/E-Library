@@ -2,8 +2,8 @@
 {
     public enum StatusApproveDocument
     {
-        Approved,
         WaitApprove,
-        Canceled
+        Canceled,
+        Approved
     }
 }

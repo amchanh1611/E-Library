@@ -2003,11 +2003,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_LibraryRepository\\E_Library.Repository.csproj",
+      "projectUniqueName": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_LibraryRepository\\E_Library.Repository.csproj",
       "projectName": "E_Library.Repository",
-      "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_LibraryRepository\\E_Library.Repository.csproj",
+      "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_LibraryRepository\\E_Library.Repository.csproj",
       "packagesPath": "C:\\Users\\Minh Chanh\\.nuget\\packages\\",
-      "outputPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_LibraryRepository\\obj\\",
+      "outputPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_LibraryRepository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2028,11 +2028,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E-Library.Models\\E_Library.Models.csproj": {
-              "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E-Library.Models\\E_Library.Models.csproj"
+            "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E-Library.Models\\E_Library.Models.csproj": {
+              "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E-Library.Models\\E_Library.Models.csproj"
             },
-            "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj": {
-              "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj"
+            "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj": {
+              "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.DTO\\E_Library.DTO.csproj"
             }
           }
         }

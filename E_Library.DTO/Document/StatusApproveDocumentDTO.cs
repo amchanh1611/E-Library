@@ -1,6 +1,6 @@
 ﻿using E_Library.Common.Enum;
 
-namespace E_Library.DTO.FunctionDTO
+namespace E_Library.DTO.Document
 {
     public class StatusApproveDocumentDTO
     {

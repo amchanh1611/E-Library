@@ -7,22 +7,31 @@ namespace E_Library.Controllers
     [Route("[controller]")]
     public class HomeController : ControllerBase
     {
-        private readonly IGetTotalSubject _getTotalSubject;
+        private readonly IHomeBUS _homeBUS;
 
-        public HomeController(IGetTotalSubject getTotalSubject)
+        public HomeController(IHomeBUS getTotalExamBUS)
         {
-            _getTotalSubject = getTotalSubject;
+            _homeBUS = getTotalExamBUS;
         }
 
-        [HttpGet]
+        [HttpGet("HomeSubject")]
         public ActionResult GetTolalSubject()
         {
-            var result = _getTotalSubject.GetTotalSubjects();
+            var result = _homeBUS.GetTotalSubjects();
             if (result != null)
             {
                 return Ok(result);
             }
             return BadRequest("Khong truy van duoc du lieu trong DB");
+        }
+
+        [HttpGet("HomeExam")]
+        public ActionResult GetTotalExam()
+        {
+            var result = _homeBUS.GetTotalExam();
+            if (result != null)
+                return Ok(result);
+            return BadRequest("Loi Roi");
         }
     }
 }

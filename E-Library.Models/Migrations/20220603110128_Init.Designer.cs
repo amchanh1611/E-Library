@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Library.Models.Migrations
 {
     [DbContext(typeof(E_LibraryDbContext))]
-    [Migration("20220524133807_Init")]
+    [Migration("20220603110128_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,10 +59,6 @@ namespace E_Library.Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DocumentId"), 1L, 1);
 
-                    b.Property<string>("Approve")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
-
                     b.Property<DateTime?>("DateSend")
                         .HasColumnType("datetime2");
 
@@ -97,8 +93,8 @@ namespace E_Library.Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExamId"), 1L, 1);
 
-                    b.Property<byte?>("Approve")
-                        .HasColumnType("tinyint");
+                    b.Property<int?>("Approve")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -107,11 +103,11 @@ namespace E_Library.Models.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<bool?>("ExamType")
-                        .HasColumnType("bit");
+                    b.Property<int?>("ExamType")
+                        .HasColumnType("int");
 
-                    b.Property<byte?>("Status")
-                        .HasColumnType("tinyint");
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
 
                     b.Property<int?>("SubjectId")
                         .HasColumnType("int");
@@ -123,11 +119,11 @@ namespace E_Library.Models.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<byte?>("Time")
-                        .HasColumnType("tinyint");
+                    b.Property<int?>("Time")
+                        .HasColumnType("int");
 
-                    b.Property<byte?>("TypeFile")
-                        .HasColumnType("tinyint");
+                    b.Property<int?>("TypeFile")
+                        .HasColumnType("int");
 
                     b.HasKey("ExamId");
 

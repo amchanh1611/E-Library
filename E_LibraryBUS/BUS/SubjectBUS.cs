@@ -1,7 +1,5 @@
 ﻿using E_Library.BUS.IBUS;
-using E_Library.DTO;
-using E_Library.DTO.FunctionDTO;
-using E_Library.Models;
+using E_Library.DTO.Subject;
 using E_Library.Repository.IRepository;
 
 namespace E_Library.BUS.BUS
@@ -15,66 +13,34 @@ namespace E_Library.BUS.BUS
             _subjectRepository = subjectRepository;
         }
 
-        public bool CreateSubject(SubjectDTO subjectDTO)
+        public List<SubjectDTO> GetAllSubject()
         {
-            var dateTimeApprove = DateTime.TryParse(subjectDTO.DateAprrove,
-                       out var dt);
-            if (dateTimeApprove)
-            {
-                var result = _subjectRepository.CreateSubject(new Subjects
-                {
-                    SubjectCode = subjectDTO.SubjectCode,
-                    SubjectName = subjectDTO.SubjectName,
-                    TeacherName = subjectDTO.TeacherName,
-                    DocumentWaitAprrove = subjectDTO.DocumentWaitAprrove,
-                    StatusDocumentSubject = subjectDTO.StatusDocumentSubject,
-                    DateAprrove = dt
-                });
-                if (result)
-                    return true;
-            }
-            return false;
-        }
-
-        public List<Subjects> GetAllSubject()
-        {
-            var result = _subjectRepository.GetAllSubject();
-            return result;
+            var subjects = _subjectRepository.GetAllSubject();
+            return subjects.Select(s => new SubjectDTO { SubjectCode = s.SubjectCode, SubjectName = s.SubjectName, TeacherName = s.TeacherName, DocumentWaitAprrove = s.DocumentWaitAprrove, StatusDocumentSubject = s.StatusDocumentSubject, DateAprrove = s.DateAprrove }).ToList();
         }
 
         public List<SubjectComboboxSubjectDTO> GetComboboxSubject()
         {
-            return _subjectRepository.GetComboboxSubject();
-        }
-
-        public List<Subjects> FillSubjectBySubjectSelected(int id)
-        {
-            return _subjectRepository.GetSubjectBySubject(id);
-        }
-
-        public List<Subjects> SearchSubject(SearchSubjectDTO searchSubjectDTO)
-        {
-            return _subjectRepository.SearchSubject(searchSubjectDTO);
+            var subjects = _subjectRepository.GetAllSubject();
+            return subjects.Select(s => new SubjectComboboxSubjectDTO { SubjectId = s.SubjectId, SubjectName = s.SubjectName }).Distinct().ToList();
         }
 
         public List<SubjectComboboxTeacherDTO> GetComboboxTeacher()
         {
-            return _subjectRepository.GetComboboxTeacher();
-        }
-
-        public List<Subjects> FillSubjectByTeacherSelected(string? teacherName)
-        {
-            return _subjectRepository.GetSubjectByTeacher(teacherName);
+            var subjects = _subjectRepository.GetAllSubject();
+            return subjects.Select(s => new SubjectComboboxTeacherDTO { TeacherName = s.TeacherName }).Distinct().ToList();
         }
 
         public List<SubjectComboboxStatusDTO> GetComboboxStatus()
         {
-            return _subjectRepository.GetComboboxStatus();
+            var subject = _subjectRepository.GetAllSubject();
+            return subject.Select(s => new SubjectComboboxStatusDTO { StatusDocumentSuject = s.StatusDocumentSubject }).Distinct().ToList();
         }
 
-        public List<Subjects> FillSubjectByStatusSelected(bool? status)
+        public List<SubjectDTO> FillAndSearchSubject(FillAndSearchSubjectDTO fillAndSearchSubjectDTO)
         {
-            return _subjectRepository.GetSubjectByStatus(status);
+            var subjects = _subjectRepository.FillAndSearchSubject(fillAndSearchSubjectDTO.SubjectId, fillAndSearchSubjectDTO.TeacherName, fillAndSearchSubjectDTO.StatusDocumentSubject, fillAndSearchSubjectDTO.InfoSearch);
+            return subjects.Select(s => new SubjectDTO { SubjectCode = s.SubjectCode, SubjectName = s.SubjectName, TeacherName = s.TeacherName, DocumentWaitAprrove = s.DocumentWaitAprrove, StatusDocumentSubject = s.StatusDocumentSubject, DateAprrove = s.DateAprrove }).ToList();
         }
     }
 }

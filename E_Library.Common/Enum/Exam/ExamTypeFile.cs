@@ -2,8 +2,8 @@
 {
     public enum ExamTypeFile
     {
-        PPTX,
-        DOCX,
+        PPT,
+        DOC,
         XLSX
     }
 }

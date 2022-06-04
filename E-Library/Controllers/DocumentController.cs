@@ -1,6 +1,5 @@
 ﻿using E_Library.BUS.IBUS;
-using E_Library.Common.Enum;
-using E_Library.DTO.FunctionDTO;
+using E_Library.DTO.Document;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Library.Controllers
@@ -30,7 +29,6 @@ namespace E_Library.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateApproveDocument(StatusApproveDocumentDTO document, int id)
         {
-
             var check = _documentBUS.UpdateApproveDocument(document, id);
             if (check)
             {
@@ -38,6 +36,7 @@ namespace E_Library.Controllers
             }
             return BadRequest("Khong update duoc");
         }
+
         [HttpGet("ComboboxStatus")]
         public ActionResult GetComboboxStatus()
         {
@@ -46,6 +45,7 @@ namespace E_Library.Controllers
                 return Ok(result);
             return BadRequest("Loi roi");
         }
+
         [HttpGet("ComboboxSubject")]
         public ActionResult GetComboboxSubject()
         {
@@ -54,26 +54,11 @@ namespace E_Library.Controllers
                 return Ok(result);
             return BadRequest("Loi roi");
         }
-        [HttpGet("FillStatus/{Status}")]
-        public ActionResult FillDocumentByStatus(StatusApproveDocument status)
+
+        [HttpGet("FillAndSearch")]
+        public ActionResult FillAndSearchDocument(FillAndSearchDocumentDTO fillAndSearchDocumnet)
         {
-            var result = _documentBUS.FillDocumentByStatus(status);
-            if (result.Any())
-                return Ok(result);
-            return BadRequest("Loi roi");
-        }
-        [HttpGet("FillSubject/{SubjectName}")]
-        public ActionResult FillDocumentBySubject(string? subjectName)
-        {
-            var result = _documentBUS.FillDocumentBySubject(subjectName);
-            if (result.Any())
-                return Ok(result);
-            return BadRequest("Loi Roi");
-        }
-        [HttpGet("SearchDocument")]
-        public ActionResult SearchDocument(SearchSubjectDTO info)
-        {
-            var result = _documentBUS.SearchDocument(info);
+            var result = _documentBUS.FillAndSearchDocument(fillAndSearchDocumnet);
             if (result.Any())
                 return Ok(result);
             return BadRequest("Loi roi");

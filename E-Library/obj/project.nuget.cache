@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZL9FhHyohDR1pXhiiYFYU1qN8es1M9Ab8DwzCgkWFHgGWWv9YtT6oShxc+LFWik2JjAH20GNF/pQ5iOXrTPAHQ==",
+  "dgSpecHash": "2cEWaOyqaD8dsB22J1HDoPbhStkm2xye+Hn9YgiVRAHV14a97Z/v1aOJkmKN3y/KkyIfTxNW2YNf/rSQHWsS5w==",
   "success": true,
-  "projectFilePath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E-Library\\E_Library.csproj",
+  "projectFilePath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E-Library\\E_Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Minh Chanh\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Minh Chanh\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.5\\microsoft.aspnetcore.jsonpatch.6.0.5.nupkg.sha512",

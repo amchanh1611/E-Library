@@ -1,4 +1,4 @@
-﻿namespace E_Library.DTO.FunctionDTO
+﻿namespace E_Library.DTO.Subject
 {
     public class SubjectComboboxTeacherDTO
     {

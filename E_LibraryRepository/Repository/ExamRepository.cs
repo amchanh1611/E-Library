@@ -1,4 +1,5 @@
-﻿using E_Library.Models;
+﻿using E_Library.Common.Enum;
+using E_Library.Models;
 using E_Library.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,34 +8,38 @@ namespace E_Library.Repository.Repository
     public class ExamRepository : IExamRepository
     {
         private readonly E_LibraryDbContext _context;
+
         public ExamRepository(E_LibraryDbContext context)
         {
             _context = context;
         }
 
-        public bool CreateExam(Exams exams)
+        public IQueryable<Exams> FillAndSearchExam(ExamStatus? status, int subjectId, string? teacherCreateExam, string? infoSearch)
         {
-            _context.Exams.Add(exams);
-            var check = _context.SaveChanges();
-            return check>0?true:false;
+            IQueryable<Exams> query = _context.Exams;
+            IQueryable<Subjects> subjects = _context.Subjects;
+            if (status != null)
+                query = query.Where(w => w.Status == status);
+            if (subjectId != 0)
+                query = query.Where(w => w.SubjectId == subjectId);
+            if (teacherCreateExam != null)
+                query = query.Where(w => w.TeacherCreateExam == teacherCreateExam);
+            if (infoSearch != null)
+                query = from e in query
+                        join s in subjects on e.SubjectId equals s.SubjectId
+                        where e.ExamName.Contains(infoSearch) || s.SubjectName.Contains(infoSearch)
+                        select e;
+            return query;
         }
 
-        public bool DeleteExamById(int id)
+        public IQueryable<Exams> GetAllExam()
         {
-            var exam = _context.Exams.Where(w=>w.ExamId==id).FirstOrDefault();
-            _context.Exams.Remove(exam);
-            var check = _context.SaveChanges();
-            return check > 0?true:false;
-        }
-
-        public List<Exams> GetAllExam()
-        {
-            return _context.Exams.Include(i => i.Subjects).ToList();
+            return _context.Exams;
         }
 
         public Exams GetExamById(int id)
         {
-            return _context.Exams.Include(i=>i.Subjects).Where(w => w.ExamId == id).FirstOrDefault();
+            return _context.Exams.Include(i => i.Subjects).Where(w => w.ExamId == id).FirstOrDefault();
         }
 
         public bool UpdateExamById(Exams exams, int id)

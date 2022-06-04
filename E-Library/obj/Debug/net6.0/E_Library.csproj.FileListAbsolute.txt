@@ -139,7 +139,6 @@ D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug\net6.0\E_Library.AssemblyInfoInputs.cache
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug\net6.0\E_Library.AssemblyInfo.cs
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug\net6.0\E_Library.csproj.CoreCompileInputs.cache
-D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug\net6.0\E_Library.MvcApplicationPartsAssemblyInfo.cs
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug\net6.0\E_Library.MvcApplicationPartsAssemblyInfo.cache
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug\net6.0\staticwebassets.build.json
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug\net6.0\staticwebassets.development.json
@@ -226,3 +225,4 @@ D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\NotGit\E-Library\E-Library\ob
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\NotGit\E-Library\E-Library\obj\Debug\net6.0\E_Library.csproj.CopyComplete
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\NotGit\E-Library\E-Library\obj\Debug\net6.0\E_Library.genruntimeconfig.cache
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\NotGit\E-Library\E-Library\obj\Debug\net6.0\ref\E_Library.dll
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E-Library\obj\Debug\net6.0\E_Library.MvcApplicationPartsAssemblyInfo.cs

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\E_Library.Common.csproj",
+      "projectUniqueName": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\E_Library.Common.csproj",
       "projectName": "E_Library.Common",
-      "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\E_Library.Common.csproj",
+      "projectPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\E_Library.Common.csproj",
       "packagesPath": "C:\\Users\\Minh Chanh\\.nuget\\packages\\",
-      "outputPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\NotGit\\E-Library\\E_Library.Common\\obj\\",
+      "outputPath": "D:\\Minh Chánh\\BackEnd\\Project_2\\Project\\E-Library\\E-Library\\E_Library.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
