@@ -7,7 +7,7 @@ namespace E_Library.Repository.IRepository
     {
         public IQueryable<Exams> GetAllExam();
 
-        public Exams GetExamById(int id);
+        public IQueryable<Exams> GetExamById(int id);
 
         public IQueryable<Exams> FillAndSearchExam(ExamStatus? status, int subjectId, string? teacherCreateExam, string? infoSearch);
     }

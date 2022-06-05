@@ -38,6 +38,14 @@ builder.Services.AddTransient<IDocumentRepository, DocumentRepository>();
 builder.Services.AddTransient<IExamRepository, ExamRepository>();
 builder.Services.AddTransient<IExamBUS, ExamBUS>();
 
+//Question
+
+builder.Services.AddTransient<IQuestionRepository,QuestionRepository>();
+
+//Answer
+
+builder.Services.AddTransient<IAnswerRepository, AnswerRepository>();
+
 //Json
 
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(option => option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);

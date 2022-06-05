@@ -59,5 +59,13 @@ namespace E_Library.Controllers
                 return Ok(result);
             return BadRequest("Loi roi");
         }
+        [HttpGet("ExamDetail/{Id}")]
+        public ActionResult GetExamDetail(int id)
+        {
+            var result = _examBUS.GetExamDetailById(id);
+            if (result != null)
+                return Ok(result);
+            return BadRequest("Loi roi");
+        }
     }
 }

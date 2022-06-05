@@ -2,7 +2,7 @@
 {
     public class QuestionDTO
     {
-        public int ExamId { get; set; }
-        public string QuestionName { get; set; }
+        public string? QuestionCode { get; set; }
+        public string? QuestionName { get; set; }
     }
 }

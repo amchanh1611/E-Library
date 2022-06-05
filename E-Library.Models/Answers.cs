@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E_Library.Models
 {
@@ -13,10 +8,15 @@ namespace E_Library.Models
     {
         [Key]
         public int AnswerId { get; set; }
+
         public int? QuestionId { get; set; }
+
+        [MaxLength(1)]
+        [Column(TypeName = "varchar")]
+        public string? AnswerCode { get; set; }
+
         public string? AnswerName { get; set; }
         public bool? CorrectAnswer { get; set; }
         public Questions Questions { get; set; }
-        
     }
 }

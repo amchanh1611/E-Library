@@ -12,38 +12,16 @@ namespace E_Library.Repository.Repository
             _context = context;
         }
 
-        public bool CreateQuestion(Questions questions)
-        {
-            _context.Questions.Add(questions);
-            var check = _context.SaveChanges();
-            return check > 0 ? true : false;
 
-        }
-
-        public bool DeleteQuestionById(int id)
+        public IQueryable<Questions> GetAllQuestion()
         {
-            var question = _context.Questions.Where(w=>w.QuestionId == id).FirstOrDefault();
-            _context.Questions.Remove(question);
-            var check = _context.SaveChanges();
-            return check > 0 ? true : false;
-        }
-
-        public List<Questions> GetAllQuestion()
-        {
-            return _context.Questions.Include(i=>i.Exams).ToList();
+            return _context.Questions;
         }
 
         public Questions GetQuestionById(int id)
         {
-            return  _context.Questions.Include(i=>i.Exams).Where(w=>w.QuestionId==id).FirstOrDefault();
+            return  _context.Questions.Where(w=>w.QuestionId==id).FirstOrDefault();
         }
 
-        public bool UpdateQuestionById(Questions questions, int id)
-        {
-            var question = _context.Questions.Where(w => w.QuestionId == id).FirstOrDefault();
-            question = questions;
-            var check = _context.SaveChanges();
-            return check > 0 ? true : false;
-        }
     }
 }

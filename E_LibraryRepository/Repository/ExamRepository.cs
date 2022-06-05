@@ -37,9 +37,9 @@ namespace E_Library.Repository.Repository
             return _context.Exams;
         }
 
-        public Exams GetExamById(int id)
+        public IQueryable<Exams> GetExamById(int id)
         {
-            return _context.Exams.Include(i => i.Subjects).Where(w => w.ExamId == id).FirstOrDefault();
+            return _context.Exams.Where(w=>w.ExamId==id);
         }
 
         public bool UpdateExamById(Exams exams, int id)
