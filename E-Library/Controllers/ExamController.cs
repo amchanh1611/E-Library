@@ -67,5 +67,13 @@ namespace E_Library.Controllers
                 return Ok(result);
             return BadRequest("Loi roi");
         }
+        [HttpGet("{QuestionId}")]
+        public ActionResult ClickQuestion(int questionId)
+        {
+            var result = _examBUS.ClickQuestion(questionId);
+            if (result != null)
+                return Ok(result);
+            return BadRequest("Loi roi");
+        }
     }
 }

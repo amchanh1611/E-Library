@@ -12,7 +12,6 @@ namespace E_Library.DTO.Exam
         public ExamType? ExamType { get; set; }
         public string? TeacherCreateExam { get; set; }
         public DateTime? CreateDate { get; set; }
-        //public DictionaryExamDTO QuestionAndAnswer { get; set; }
         public Dictionary<string, string> QuestionAndAnswer { get; set; }
         public QuestionDTO QuestionDefault { get; set; }
         public List<AnswerDTO> AnswersDefault { get; set; }

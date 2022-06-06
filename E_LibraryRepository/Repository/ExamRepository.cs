@@ -49,5 +49,10 @@ namespace E_Library.Repository.Repository
             var check = _context.SaveChanges();
             return check > 0 ? true : false;
         }
+        public/* IQueryable<*/Exams GetExamDetail(int id)
+        {
+            var exams = _context.Exams.Where(x => x.ExamId == id).Include(x=>x.Subjects).Include(x => x.Questions).ThenInclude(x => x.Answers).FirstOrDefault();
+            return exams;
+        }
     }
 }

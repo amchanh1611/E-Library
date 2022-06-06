@@ -5,6 +5,6 @@ namespace E_Library.Repository.IRepository
     public interface IQuestionRepository
     {
         public IQueryable<Questions> GetAllQuestion();
-        public Questions GetQuestionById(int id);
+        public IQueryable<Questions> GetQuestionById(int id);
     }
 }

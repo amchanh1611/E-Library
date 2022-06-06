@@ -21,6 +21,11 @@ namespace E_Library.BUS.BUS
             _answerRepository = answerRepository;
         }
 
+        public QuestionAndAnswerDetailDTO ClickQuestion(int questionId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<ExamDTO> FillAndSearchExam(FillAndSearchExamDTO fillAndSearchExam)
         {
             var exams = _examRepository.FillAndSearchExam(fillAndSearchExam.Status, fillAndSearchExam.SubjectId, fillAndSearchExam.TeacherCreateExam, fillAndSearchExam.InfoSearch);
@@ -57,27 +62,26 @@ namespace E_Library.BUS.BUS
 
         public ExamDetailDTO GetExamDetailById(int id)
         {
-            var exam = _examRepository.GetExamById(id);
-            var questions = _questionRepository.GetAllQuestion();
-            var answers = _answerRepository.GetAllAnswers();
-            var subjects = _subjectRepository.GetAllSubject();
+            var exam = _examRepository.GetExamDetail(id);
 
-            //Get list question
+            List<QuestionDTO> lstQuestion = new List<QuestionDTO>();
+            foreach (var ob in exam.Questions)
+            {
+                lstQuestion.Add(new QuestionDTO { QuestionCode = ob.QuestionCode, QuestionName = ob.QuestionName });
+            }
 
-            List<QuestionDTO> lstQuestion = questions.Select(s => new QuestionDTO { QuestionCode = s.QuestionCode, QuestionName = s.QuestionName }).ToList();
-
-            //Get list correct answer
-
-            List<AnswerCorrectDTO> lstCorrectAnswer = (from a in answers
-                                                       where a.CorrectAnswer == true
-                                                       select new AnswerCorrectDTO { QuestionId = a.QuestionId, AnswerCode = a.AnswerCode }).ToList();
-            //Get list Answer Default
-
-            List<AnswerDTO> lstAnswerDefault = (from a in answers
-                                                where a.QuestionId == 1
-                                                select new AnswerDTO { AnswerCode = a.AnswerCode, AnswerName = a.AnswerName, CorrectAnswer = a.CorrectAnswer }).ToList();
-
-            //Create Dictionary QuestionAndAnswer and add Key, Values
+            List<AnswerCorrectDTO> lstCorrectAnswer = new List<AnswerCorrectDTO>();
+            List<AnswerDTO> lstAnswerDefault = new List<AnswerDTO>();
+            foreach (var question in exam.Questions)
+            {
+                foreach (var answer in question.Answers)
+                {
+                    if (answer.CorrectAnswer == true)
+                        lstCorrectAnswer.Add(new AnswerCorrectDTO { AnswerCode = answer.AnswerCode, QuestionId = answer.QuestionId });
+                    if (answer.QuestionId == 1)
+                        lstAnswerDefault.Add(new AnswerDTO { AnswerCode = answer.AnswerCode, AnswerName = answer.AnswerName, CorrectAnswer = answer.CorrectAnswer });
+                }
+            }
 
             Dictionary<string, string> questionAndAnswer = new Dictionary<string, string>();
             for (int i = 0; i < lstQuestion.Count; i++)
@@ -85,9 +89,7 @@ namespace E_Library.BUS.BUS
                 questionAndAnswer.Add(lstQuestion[i].QuestionCode, lstCorrectAnswer[i].AnswerCode);
             }
 
-            var result = (from e in exam
-                        join s in subjects on e.SubjectId equals s.SubjectId
-                        select new ExamDetailDTO { SubjectName = s.SubjectName, Time = e.Time, ExamName = e.ExamName, ExamType = e.ExamType, TeacherCreateExam = e.TeacherCreateExam, CreateDate = e.CreateDate, QuestionAndAnswer = questionAndAnswer, QuestionDefault = lstQuestion[0], AnswersDefault = lstAnswerDefault }).FirstOrDefault();
+            var result = new ExamDetailDTO { SubjectName = exam.Subjects.SubjectName, ExamName = exam.ExamName, ExamType = exam.ExamType, Time = exam.Time, TeacherCreateExam = exam.TeacherCreateExam, CreateDate = exam.CreateDate, QuestionAndAnswer = questionAndAnswer, QuestionDefault = lstQuestion[0], AnswersDefault = lstAnswerDefault };
 
             return result;
         }

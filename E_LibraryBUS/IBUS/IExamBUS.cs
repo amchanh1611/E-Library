@@ -1,4 +1,5 @@
 ﻿using E_Library.DTO.Exam;
+using E_Library.DTO.Question;
 
 namespace E_Library.BUS.IBUS
 {
@@ -15,5 +16,6 @@ namespace E_Library.BUS.IBUS
         public List<ExamDTO> FillAndSearchExam(FillAndSearchExamDTO fillAndSearchExam);
 
         public ExamDetailDTO GetExamDetailById(int id);
+        public QuestionAndAnswerDetailDTO ClickQuestion(int questionId);
     }
 }
