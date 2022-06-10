@@ -134,6 +134,35 @@ namespace E_Library.Models.Migrations
                     b.ToTable("Exams");
                 });
 
+            modelBuilder.Entity("E_Library.Models.PrivateFiles", b =>
+                {
+                    b.Property<int>("PrivateFileId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrivateFileId"), 1L, 1);
+
+                    b.Property<string>("Editor")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime?>("LastDateEdit")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PrivateFileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PrivateFileType")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Size")
+                        .HasColumnType("float");
+
+                    b.HasKey("PrivateFileId");
+
+                    b.ToTable("PrivateFiles");
+                });
+
             modelBuilder.Entity("E_Library.Models.Questions", b =>
                 {
                     b.Property<int>("QuestionId")

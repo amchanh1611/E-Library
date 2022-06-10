@@ -1,5 +1,6 @@
 ﻿using E_Library.Models;
 using E_Library.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_Library.Repository.Repository
 {
@@ -12,14 +13,9 @@ namespace E_Library.Repository.Repository
             _context = context;
         }
 
-        public IQueryable<Questions> GetAllQuestion()
+        public Questions GetQuestionById(int id)
         {
-            return _context.Questions;
-        }
-
-        public IQueryable<Questions> GetQuestionById(int id)
-        {
-            return _context.Questions.Where(w => w.QuestionId == id);
+            return _context.Questions.Where(w => w.QuestionId == id).Include(i=>i.Answers).FirstOrDefault();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace E_Library.Repository.Repository
 
         public IQueryable<Exams> FillAndSearchExam(ExamStatus? status, int subjectId, string? teacherCreateExam, string? infoSearch)
         {
-            IQueryable<Exams> query = _context.Exams;
+            IQueryable<Exams> query = _context.Exams.Include(i=>i.Subjects);
             IQueryable<Subjects> subjects = _context.Subjects;
             if (status != null)
                 query = query.Where(w => w.Status == status);
@@ -34,12 +34,12 @@ namespace E_Library.Repository.Repository
 
         public IQueryable<Exams> GetAllExam()
         {
-            return _context.Exams;
+            return _context.Exams.Include(i=>i.Subjects);
         }
 
         public IQueryable<Exams> GetExamById(int id)
         {
-            return _context.Exams.Where(w=>w.ExamId==id);
+            return _context.Exams.Where(w => w.ExamId == id);
         }
 
         public bool UpdateExamById(Exams exams, int id)
@@ -49,9 +49,10 @@ namespace E_Library.Repository.Repository
             var check = _context.SaveChanges();
             return check > 0 ? true : false;
         }
-        public/* IQueryable<*/Exams GetExamDetail(int id)
+
+        public Exams GetExamDetail(int id)
         {
-            var exams = _context.Exams.Where(x => x.ExamId == id).Include(x=>x.Subjects).Include(x => x.Questions).ThenInclude(x => x.Answers).FirstOrDefault();
+            var exams = _context.Exams.Where(x => x.ExamId == id).Include(x => x.Subjects).Include(x => x.Questions).ThenInclude(x => x.Answers).FirstOrDefault();
             return exams;
         }
     }

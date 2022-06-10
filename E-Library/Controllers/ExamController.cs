@@ -1,5 +1,4 @@
 ﻿using E_Library.BUS.IBUS;
-using E_Library.Common.Enum;
 using E_Library.DTO.Exam;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,6 +50,7 @@ namespace E_Library.Controllers
                 return Ok(result);
             return BadRequest("Loi roi");
         }
+
         [HttpGet("FillAndSearch")]
         public ActionResult FillAndSearchExam(FillAndSearchExamDTO fillAndSearchExam)
         {
@@ -59,6 +59,7 @@ namespace E_Library.Controllers
                 return Ok(result);
             return BadRequest("Loi roi");
         }
+
         [HttpGet("ExamDetail/{Id}")]
         public ActionResult GetExamDetail(int id)
         {
@@ -67,7 +68,8 @@ namespace E_Library.Controllers
                 return Ok(result);
             return BadRequest("Loi roi");
         }
-        [HttpGet("{QuestionId}")]
+
+        [HttpGet("ClickQuestion/{QuestionId}")]
         public ActionResult ClickQuestion(int questionId)
         {
             var result = _examBUS.ClickQuestion(questionId);

@@ -42,9 +42,9 @@ builder.Services.AddTransient<IExamBUS, ExamBUS>();
 
 builder.Services.AddTransient<IQuestionRepository,QuestionRepository>();
 
-//Answer
-
-builder.Services.AddTransient<IAnswerRepository, AnswerRepository>();
+//PrivateFile
+builder.Services.AddTransient<IPrivateFileBUS, PrivateFileBUS>();
+builder.Services.AddTransient<IPrivateFileRepository, PrivateFileRepository>();
 
 //Json
 

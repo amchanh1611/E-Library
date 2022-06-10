@@ -8,7 +8,7 @@ namespace E_Library.DTO.Exam
 
         public string? ExamName { get; set; }
 
-        public int? SubjectId { get; set; }
+        public string? SubjectName { get; set; }
 
         public string? TeacherCreateExam { get; set; }
 

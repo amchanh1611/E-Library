@@ -2,7 +2,6 @@
 {
     public class AnswerCorrectDTO
     {
-        public int? QuestionId { get; set; }
         public string? AnswerCode { get; set; }
     }
 }
