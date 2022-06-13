@@ -30,5 +30,11 @@ namespace E_Library.Repository.Repository
         {
             return _context.Subjects;
         }
+
+        public IQueryable<Subjects> PagingSubject(int page)
+        {
+            var subject = _context.Subjects.OrderBy(s => s.SubjectId).Skip((page - 1) * 8).Take(8);
+            return subject;
+        }
     }
 }

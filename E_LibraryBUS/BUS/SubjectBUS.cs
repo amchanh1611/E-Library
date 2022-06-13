@@ -42,5 +42,16 @@ namespace E_Library.BUS.BUS
             var subjects = _subjectRepository.FillAndSearchSubject(fillAndSearchSubjectDTO.SubjectId, fillAndSearchSubjectDTO.TeacherName, fillAndSearchSubjectDTO.StatusDocumentSubject, fillAndSearchSubjectDTO.InfoSearch);
             return subjects.Select(s => new SubjectDTO { SubjectCode = s.SubjectCode, SubjectName = s.SubjectName, TeacherName = s.TeacherName, DocumentWaitAprrove = s.DocumentWaitAprrove, StatusDocumentSubject = s.StatusDocumentSubject, DateAprrove = s.DateAprrove }).ToList();
         }
+
+        public SubjectPagingDTO SubjectPaging(int page)
+        {
+            var subjectCount = _subjectRepository.GetAllSubject().Count();
+            var subjectPage = _subjectRepository.PagingSubject(page);
+            var subjectDTO = subjectPage.Select(s => new SubjectDTO { SubjectCode = s.SubjectCode, SubjectName = s.SubjectName, TeacherName = s.TeacherName, DateAprrove = s.DateAprrove, DocumentWaitAprrove = s.DocumentWaitAprrove, StatusDocumentSubject = s.StatusDocumentSubject }).ToList();
+
+            var pageNumber = (int)Math.Ceiling((decimal)subjectCount / 2);
+
+            return new SubjectPagingDTO { PageNumber = pageNumber, PageNow = page, Subject = subjectDTO };
+        }
     }
 }

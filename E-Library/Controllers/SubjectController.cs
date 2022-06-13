@@ -63,5 +63,14 @@ namespace E_Library.Controllers
                 return Ok(result);
             return BadRequest("Loi roi");
         }
+
+        [HttpGet("{Page}")]
+        public ActionResult SubjectPaging(int page)
+        {
+            var result = _subjectBUS.SubjectPaging(page);
+            if (result != null)
+                return Ok(result);
+            return BadRequest("Loi roi");
+        }
     }
 }

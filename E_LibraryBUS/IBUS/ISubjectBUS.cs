@@ -13,5 +13,6 @@ namespace E_Library.BUS.IBUS
         public List<SubjectComboboxStatusDTO> GetComboboxStatus();
 
         public List<SubjectDTO> FillAndSearchSubject(FillAndSearchSubjectDTO fillAndSearchSubjectDTO);
+        public SubjectPagingDTO SubjectPaging(int page);
     }
 }
