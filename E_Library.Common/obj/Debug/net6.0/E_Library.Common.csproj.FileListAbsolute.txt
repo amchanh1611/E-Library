@@ -34,3 +34,5 @@ D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\NotGit\E-Library\E_Library.Co
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\NotGit\E-Library\E_Library.Common\obj\Debug\net6.0\refint\E_Library.Common.dll
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\NotGit\E-Library\E_Library.Common\obj\Debug\net6.0\E_Library.Common.pdb
 D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\NotGit\E-Library\E_Library.Common\obj\Debug\net6.0\ref\E_Library.Common.dll
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E_Library.Common\obj\Debug\net6.0\E_Library.Common.csproj.Fody.CopyLocal.cache
+D:\Minh Chánh\BackEnd\Project_2\Project\E-Library\E-Library\E_Library.Common\obj\Debug\net6.0\E_Library.Common.csproj.Fody.RuntimeCopyLocal.cache

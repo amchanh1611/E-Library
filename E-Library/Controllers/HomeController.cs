@@ -1,4 +1,6 @@
-﻿using E_Library.BUS.IBUS;
+﻿using E_Library.BUS.BUS.Authorize;
+using E_Library.BUS.IBUS;
+using E_Library.Common.Enum.Author;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Library.Controllers
@@ -24,7 +26,7 @@ namespace E_Library.Controllers
             }
             return BadRequest("Khong truy van duoc du lieu trong DB");
         }
-
+        [Authorize(Roles.Admin)]
         [HttpGet("HomeExam")]
         public ActionResult GetTotalExam()
         {

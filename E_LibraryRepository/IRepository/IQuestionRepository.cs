@@ -4,6 +4,6 @@ namespace E_Library.Repository.IRepository
 {
     public interface IQuestionRepository
     {
-        public Questions GetQuestionById(int id);
+        public Question GetQuestionById(int id);
     }
 }

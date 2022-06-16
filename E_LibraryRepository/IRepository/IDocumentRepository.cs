@@ -5,12 +5,12 @@ namespace E_Library.Repository.IRepository
 {
     public interface IDocumentRepository
     {
-        public IQueryable<Documents> GetAllDocument();
+        public IQueryable<Document> GetAllDocument();
 
-        public Documents GetDocumentById(int id);
+        public Document GetDocumentById(int id);
 
-        public bool UpdateDocumentById(Documents document);
+        public bool UpdateDocumentById(Document document);
 
-        public IQueryable<Documents> FillAndSearchDocument(StatusApproveDocument? status, int subjectId, string? infoSearch);
+        public IQueryable<Document> FillAndSearchDocument(StatusApproveDocument? status, int subjectId, string? infoSearch);
     }
 }

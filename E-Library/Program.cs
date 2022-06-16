@@ -1,5 +1,7 @@
 using E_Library.BUS.BUS;
+using E_Library.BUS.BUS.Authorize;
 using E_Library.BUS.IBUS;
+using E_Library.Common.Helper;
 using E_Library.Models;
 using E_Library.Repository.IRepository;
 using E_Library.Repository.Repository;
@@ -46,11 +48,32 @@ builder.Services.AddTransient<IQuestionRepository,QuestionRepository>();
 builder.Services.AddTransient<IPrivateFileBUS, PrivateFileBUS>();
 builder.Services.AddTransient<IPrivateFileRepository, PrivateFileRepository>();
 
+//User
+builder.Services.AddTransient<IAuthenRepository, AuthenRepository>();
+
+//Authen
+builder.Services.AddTransient<IAuthenBUS, AuthenBUS>();
+builder.Services.AddTransient<IJwtUtils,JwtUtils>();
+
 //Json
 
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(option => option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
+// configure strongly typed settings object
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
+
+
+
 var app = builder.Build();
+
+{
+    // global error handler
+    app.UseMiddleware<ErrorHandlerMiddleware>();
+
+    // custom jwt auth middleware
+    app.UseMiddleware<JwtMiddleware>();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

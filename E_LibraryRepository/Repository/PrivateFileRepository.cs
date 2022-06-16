@@ -13,9 +13,9 @@ namespace E_Library.Repository.Repository
             _context = context;
         }
 
-        public IQueryable<PrivateFiles> FillAndSearchPrivateFile(FillAndSearchPrivateFileDTO fillAndSearch)
+        public IQueryable<PrivateFile> FillAndSearchPrivateFile(FillAndSearchPrivateFileDTO fillAndSearch)
         {
-            IQueryable<PrivateFiles> query = _context.PrivateFiles;
+            IQueryable<PrivateFile> query = _context.PrivateFiles;
             if (fillAndSearch.PrivateFileType != null)
                 query = query.Where(w => w.PrivateFileType == fillAndSearch.PrivateFileType);
             if (fillAndSearch.InfoSearch != null)
@@ -23,14 +23,14 @@ namespace E_Library.Repository.Repository
             return query;
         }
 
-        public IQueryable<PrivateFiles> GetAllPrivateFile()
+        public IQueryable<PrivateFile> GetAllPrivateFile()
         {
             return _context.PrivateFiles;
         }
 
-        public IQueryable<PrivateFiles> GetPrivateFileById(List<int> lstId)
+        public IQueryable<PrivateFile> GetPrivateFileById(List<int> lstId)
         {
-            IQueryable<PrivateFiles> query = _context.PrivateFiles.Where(x => lstId.Contains(x.PrivateFileId));
+            IQueryable<PrivateFile> query = _context.PrivateFiles.Where(x => lstId.Contains(x.PrivateFileId));
 
             return query;
         }

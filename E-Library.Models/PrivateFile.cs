@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace E_Library.Models
 {
     [Table("PrivateFiles")]
-    public class PrivateFiles
+    public class PrivateFile
     {
         [Key]
         public int PrivateFileId { get; set; }

@@ -34,13 +34,13 @@ namespace E_Library.BUS.BUS
         public List<ExamDTO> FillAndSearchExam(FillAndSearchExamDTO fillAndSearchExam)
         {
             var exams = _examRepository.FillAndSearchExam(fillAndSearchExam.Status, fillAndSearchExam.SubjectId, fillAndSearchExam.TeacherCreateExam, fillAndSearchExam.InfoSearch);
-            return exams.Select(s => new ExamDTO { TypeFile = s.TypeFile, ExamName = s.ExamName, Status = s.Status, SubjectName = s.Subjects.SubjectName, TeacherCreateExam = s.TeacherCreateExam, Time = s.Time, Approve = s.Approve, ExamType = s.ExamType }).ToList();
+            return exams.Select(s => new ExamDTO { TypeFile = s.TypeFile, ExamName = s.ExamName, Status = s.Status, SubjectName = s.Subject.SubjectName, TeacherCreateExam = s.TeacherCreateExam, Time = s.Time, Approve = s.Approve, ExamType = s.ExamType }).ToList();
         }
 
         public List<ExamDTO> GetAllExam()
         {
             var exams = _examRepository.GetAllExam();
-            return exams.Select(s => new ExamDTO { TypeFile = s.TypeFile, ExamName = s.ExamName, ExamType = s.ExamType, TeacherCreateExam = s.TeacherCreateExam, Time = s.Time, SubjectName = s.Subjects.SubjectName, Status = s.Status, Approve = s.Approve }).ToList();
+            return exams.Select(s => new ExamDTO { TypeFile = s.TypeFile, ExamName = s.ExamName, ExamType = s.ExamType, TeacherCreateExam = s.TeacherCreateExam, Time = s.Time, SubjectName = s.Subject.SubjectName, Status = s.Status, Approve = s.Approve }).ToList();
         }
 
         public List<ExamComboboxStatusDTO> GetComboboxStatus()
@@ -111,7 +111,7 @@ namespace E_Library.BUS.BUS
                 questionAndAnswer.Add(lstQuestion[i].QuestionId, lstDictionaryValue[i]);
             }
 
-            return new ExamDetailDTO { SubjectName = exam.Subjects.SubjectName, ExamName = exam.ExamName, ExamType = exam.ExamType, Time = exam.Time, TeacherCreateExam = exam.TeacherCreateExam, CreateDate = exam.CreateDate, QuestionAndAnswer = questionAndAnswer, QuestionAndAnswerDefault = questionAndAnswerDefault };
+            return new ExamDetailDTO { SubjectName = exam.Subject.SubjectName, ExamName = exam.ExamName, ExamType = exam.ExamType, Time = exam.Time, TeacherCreateExam = exam.TeacherCreateExam, CreateDate = exam.CreateDate, QuestionAndAnswer = questionAndAnswer, QuestionAndAnswerDefault = questionAndAnswerDefault };
         }
     }
 }

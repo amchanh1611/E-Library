@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace E_Library.Models
 {
     [Table("Questions")]
-    public class Questions
+    public class Question
     {
         [Key]
         public int QuestionId { get; set; }
@@ -15,7 +15,7 @@ namespace E_Library.Models
         public string? QuestionCode { get; set; }
 
         public string? QuestionName { get; set; }
-        public ICollection<Answers> Answers { get; set; }
-        public Exams Exams { get; set; }
+        public ICollection<Answer> Answers { get; set; }
+        public Exam Exam { get; set; }
     }
 }

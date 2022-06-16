@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace E_Library.Models
 {
     [Table("Exams")]
-    public class Exams
+    public class Exam
     {
         [Key]
         public int ExamId { get; set; }
@@ -28,7 +28,7 @@ namespace E_Library.Models
         public ExamApprove? Approve { get; set; }
 
         public DateTime? CreateDate { get; set; }
-        public ICollection<Questions> Questions { get; set; }
-        public Subjects Subjects { get; set; }
+        public ICollection<Question> Questions { get; set; }
+        public Subject Subject { get; set; }
     }
 }

@@ -5,8 +5,8 @@ namespace E_Library.Repository.IRepository
 {
     public interface IPrivateFileRepository
     {
-        public IQueryable<PrivateFiles> GetAllPrivateFile();
-        public IQueryable<PrivateFiles> FillAndSearchPrivateFile(FillAndSearchPrivateFileDTO fillAndSearch);
-        public IQueryable<PrivateFiles> GetPrivateFileById(List<int> id);
+        public IQueryable<PrivateFile> GetAllPrivateFile();
+        public IQueryable<PrivateFile> FillAndSearchPrivateFile(FillAndSearchPrivateFileDTO fillAndSearch);
+        public IQueryable<PrivateFile> GetPrivateFileById(List<int> id);
     }
 }

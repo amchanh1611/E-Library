@@ -12,9 +12,9 @@ namespace E_Library.Repository.Repository
             _context = context;
         }
 
-        public IQueryable<Subjects> FillAndSearchSubject(int subjectId, string? teacherName, bool? statusDocumentSubject, string infoSearch)
+        public IQueryable<Subject> FillAndSearchSubject(int subjectId, string? teacherName, bool? statusDocumentSubject, string infoSearch)
         {
-            IQueryable<Subjects> query = _context.Subjects;
+            IQueryable<Subject> query = _context.Subjects;
             if (subjectId != 0)
                 query = query.Where(w => w.SubjectId == subjectId);
             if (teacherName != null)
@@ -26,14 +26,14 @@ namespace E_Library.Repository.Repository
             return query;
         }
 
-        public IQueryable<Subjects> GetAllSubject()
+        public IQueryable<Subject> GetAllSubject()
         {
             return _context.Subjects;
         }
 
-        public IQueryable<Subjects> PagingSubject(int page)
+        public IQueryable<Subject> PagingSubject(int page)
         {
-            var subject = _context.Subjects.OrderBy(s => s.SubjectId).Skip((page - 1) * 8).Take(8);
+            var subject = _context.Subjects.OrderBy(s => s.SubjectId).Skip((page - 1) * 2).Take(2);
             return subject;
         }
     }

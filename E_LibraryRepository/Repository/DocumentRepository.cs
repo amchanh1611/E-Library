@@ -14,10 +14,10 @@ namespace E_Library.Repository.Repository
             _context = context;
         }
 
-        public IQueryable<Documents> FillAndSearchDocument(StatusApproveDocument? status, int subjectId, string? infoSearch)
+        public IQueryable<Document> FillAndSearchDocument(StatusApproveDocument? status, int subjectId, string? infoSearch)
         {
-            IQueryable<Documents> query = _context.Documents;
-            IQueryable<Subjects> subjects = _context.Subjects;
+            IQueryable<Document> query = _context.Documents;
+            IQueryable<Subject> subjects = _context.Subjects;
             if (status != null)
                 query = query.Where(w => w.Status == status);
             if (subjectId != 0)
@@ -30,17 +30,17 @@ namespace E_Library.Repository.Repository
             return query;
         }
 
-        public IQueryable<Documents> GetAllDocument()
+        public IQueryable<Document> GetAllDocument()
         {
             return _context.Documents;
         }
 
-        public Documents GetDocumentById(int id)
+        public Document GetDocumentById(int id)
         {
-            return _context.Documents.Include(i => i.Subjects).Where(w => w.DocumentId == id).FirstOrDefault();
+            return _context.Documents.Include(i => i.Subject).Where(w => w.DocumentId == id).FirstOrDefault();
         }
 
-        public bool UpdateDocumentById(Documents documents)
+        public bool UpdateDocumentById(Document documents)
         {
             _context.Update(documents);
             var check = _context.SaveChanges();

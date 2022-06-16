@@ -4,9 +4,9 @@ namespace E_Library.Repository.IRepository
 {
     public interface ISubjectRepository
     {
-        public IQueryable<Subjects> GetAllSubject();
+        public IQueryable<Subject> GetAllSubject();
 
-        public IQueryable<Subjects> FillAndSearchSubject(int subjectId, string? teacherName, bool? statusDocumentSubject, string infoSearch);
-        public IQueryable<Subjects> PagingSubject(int page);
+        public IQueryable<Subject> FillAndSearchSubject(int subjectId, string? teacherName, bool? statusDocumentSubject, string infoSearch);
+        public IQueryable<Subject> PagingSubject(int page);
     }
 }

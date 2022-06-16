@@ -13,4 +13,7 @@
     <SourceRoot Include="C:\Users\Minh Chanh\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)realm.fody\10.14.0\build\Realm.Fody.props" Condition="Exists('$(NuGetPackageRoot)realm.fody\10.14.0\build\Realm.Fody.props')" />
+  </ImportGroup>
 </Project>

@@ -14,10 +14,10 @@ namespace E_Library.Repository.Repository
             _context = context;
         }
 
-        public IQueryable<Exams> FillAndSearchExam(ExamStatus? status, int subjectId, string? teacherCreateExam, string? infoSearch)
+        public IQueryable<Exam> FillAndSearchExam(ExamStatus? status, int subjectId, string? teacherCreateExam, string? infoSearch)
         {
-            IQueryable<Exams> query = _context.Exams.Include(i=>i.Subjects);
-            IQueryable<Subjects> subjects = _context.Subjects;
+            IQueryable<Exam> query = _context.Exams.Include(i=>i.Subject);
+            IQueryable<Subject> subjects = _context.Subjects;
             if (status != null)
                 query = query.Where(w => w.Status == status);
             if (subjectId != 0)
@@ -32,17 +32,17 @@ namespace E_Library.Repository.Repository
             return query;
         }
 
-        public IQueryable<Exams> GetAllExam()
+        public IQueryable<Exam> GetAllExam()
         {
-            return _context.Exams.Include(i=>i.Subjects);
+            return _context.Exams.Include(i=>i.Subject);
         }
 
-        public IQueryable<Exams> GetExamById(int id)
+        public IQueryable<Exam> GetExamById(int id)
         {
             return _context.Exams.Where(w => w.ExamId == id);
         }
 
-        public bool UpdateExamById(Exams exams, int id)
+        public bool UpdateExamById(Exam exams, int id)
         {
             var exam = _context.Exams.Where(w => w.ExamId == id).FirstOrDefault();
             exam = exams;
@@ -50,9 +50,9 @@ namespace E_Library.Repository.Repository
             return check > 0 ? true : false;
         }
 
-        public Exams GetExamDetail(int id)
+        public Exam GetExamDetail(int id)
         {
-            var exams = _context.Exams.Where(x => x.ExamId == id).Include(x => x.Subjects).Include(x => x.Questions).ThenInclude(x => x.Answers).FirstOrDefault();
+            var exams = _context.Exams.Where(x => x.ExamId == id).Include(x => x.Subject).Include(x => x.Questions).ThenInclude(x => x.Answers).FirstOrDefault();
             return exams;
         }
     }

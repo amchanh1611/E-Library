@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace E_Library.Models
 {
     [Table("Documents")]
-    public class Documents
+    public class Document
     {
         [Key]
         public int DocumentId { get; set; }
@@ -17,7 +17,7 @@ namespace E_Library.Models
         public int? SubjectId { get; set; }
         public DateTime? DateSend { get; set; }
         public StatusApproveDocument? Status { get; set; }
-        public Subjects Subjects { get; set; }
+        public Subject Subject { get; set; }
 
     }
 }

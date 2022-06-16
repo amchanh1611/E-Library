@@ -13,7 +13,7 @@ namespace E_Library.Repository.Repository
             _context = context;
         }
 
-        public Questions GetQuestionById(int id)
+        public Question GetQuestionById(int id)
         {
             return _context.Questions.Where(w => w.QuestionId == id).Include(i=>i.Answers).FirstOrDefault();
         }

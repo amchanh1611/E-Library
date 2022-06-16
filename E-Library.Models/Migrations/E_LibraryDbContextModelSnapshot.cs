@@ -22,7 +22,7 @@ namespace E_Library.Models.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("E_Library.Models.Answers", b =>
+            modelBuilder.Entity("E_Library.Models.Answer", b =>
                 {
                     b.Property<int>("AnswerId")
                         .ValueGeneratedOnAdd()
@@ -43,17 +43,14 @@ namespace E_Library.Models.Migrations
                     b.Property<int?>("QuestionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("QuestionsQuestionId")
-                        .HasColumnType("int");
-
                     b.HasKey("AnswerId");
 
-                    b.HasIndex("QuestionsQuestionId");
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("Answers");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Documents", b =>
+            modelBuilder.Entity("E_Library.Models.Document", b =>
                 {
                     b.Property<int>("DocumentId")
                         .ValueGeneratedOnAdd()
@@ -77,17 +74,14 @@ namespace E_Library.Models.Migrations
                     b.Property<int?>("SubjectId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SubjectsSubjectId")
-                        .HasColumnType("int");
-
                     b.HasKey("DocumentId");
 
-                    b.HasIndex("SubjectsSubjectId");
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Documents");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Exams", b =>
+            modelBuilder.Entity("E_Library.Models.Exam", b =>
                 {
                     b.Property<int>("ExamId")
                         .ValueGeneratedOnAdd()
@@ -114,9 +108,6 @@ namespace E_Library.Models.Migrations
                     b.Property<int?>("SubjectId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SubjectsSubjectId")
-                        .HasColumnType("int");
-
                     b.Property<string>("TeacherCreateExam")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -129,12 +120,12 @@ namespace E_Library.Models.Migrations
 
                     b.HasKey("ExamId");
 
-                    b.HasIndex("SubjectsSubjectId");
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Exams");
                 });
 
-            modelBuilder.Entity("E_Library.Models.PrivateFiles", b =>
+            modelBuilder.Entity("E_Library.Models.PrivateFile", b =>
                 {
                     b.Property<int>("PrivateFileId")
                         .ValueGeneratedOnAdd()
@@ -163,7 +154,7 @@ namespace E_Library.Models.Migrations
                     b.ToTable("PrivateFiles");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Questions", b =>
+            modelBuilder.Entity("E_Library.Models.Question", b =>
                 {
                     b.Property<int>("QuestionId")
                         .ValueGeneratedOnAdd()
@@ -172,9 +163,6 @@ namespace E_Library.Models.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"), 1L, 1);
 
                     b.Property<int?>("ExamId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExamsExamId")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionCode")
@@ -186,12 +174,28 @@ namespace E_Library.Models.Migrations
 
                     b.HasKey("QuestionId");
 
-                    b.HasIndex("ExamsExamId");
+                    b.HasIndex("ExamId");
 
                     b.ToTable("Questions");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Subjects", b =>
+            modelBuilder.Entity("E_Library.Models.Role", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"), 1L, 1);
+
+                    b.Property<int?>("RoleName")
+                        .HasColumnType("int");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("E_Library.Models.Subject", b =>
                 {
                     b.Property<int>("SubjectId")
                         .ValueGeneratedOnAdd()
@@ -226,65 +230,123 @@ namespace E_Library.Models.Migrations
                     b.ToTable("Subjects");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Answers", b =>
+            modelBuilder.Entity("E_Library.Models.User", b =>
                 {
-                    b.HasOne("E_Library.Models.Questions", "Questions")
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+
+                    b.Property<string>("LoginName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Password")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("E_Library.Models.UserRole", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("UserRoles");
+                });
+
+            modelBuilder.Entity("E_Library.Models.Answer", b =>
+                {
+                    b.HasOne("E_Library.Models.Question", "Question")
                         .WithMany("Answers")
-                        .HasForeignKey("QuestionsQuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("QuestionId");
 
-                    b.Navigation("Questions");
+                    b.Navigation("Question");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Documents", b =>
+            modelBuilder.Entity("E_Library.Models.Document", b =>
                 {
-                    b.HasOne("E_Library.Models.Subjects", "Subjects")
+                    b.HasOne("E_Library.Models.Subject", "Subject")
                         .WithMany("Documents")
-                        .HasForeignKey("SubjectsSubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SubjectId");
 
-                    b.Navigation("Subjects");
+                    b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Exams", b =>
+            modelBuilder.Entity("E_Library.Models.Exam", b =>
                 {
-                    b.HasOne("E_Library.Models.Subjects", "Subjects")
+                    b.HasOne("E_Library.Models.Subject", "Subject")
                         .WithMany("Exams")
-                        .HasForeignKey("SubjectsSubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SubjectId");
 
-                    b.Navigation("Subjects");
+                    b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Questions", b =>
+            modelBuilder.Entity("E_Library.Models.Question", b =>
                 {
-                    b.HasOne("E_Library.Models.Exams", "Exams")
+                    b.HasOne("E_Library.Models.Exam", "Exam")
                         .WithMany("Questions")
-                        .HasForeignKey("ExamsExamId")
+                        .HasForeignKey("ExamId");
+
+                    b.Navigation("Exam");
+                });
+
+            modelBuilder.Entity("E_Library.Models.UserRole", b =>
+                {
+                    b.HasOne("E_Library.Models.Role", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Exams");
+                    b.HasOne("E_Library.Models.User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Exams", b =>
+            modelBuilder.Entity("E_Library.Models.Exam", b =>
                 {
                     b.Navigation("Questions");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Questions", b =>
+            modelBuilder.Entity("E_Library.Models.Question", b =>
                 {
                     b.Navigation("Answers");
                 });
 
-            modelBuilder.Entity("E_Library.Models.Subjects", b =>
+            modelBuilder.Entity("E_Library.Models.Role", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("E_Library.Models.Subject", b =>
                 {
                     b.Navigation("Documents");
 
                     b.Navigation("Exams");
+                });
+
+            modelBuilder.Entity("E_Library.Models.User", b =>
+                {
+                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

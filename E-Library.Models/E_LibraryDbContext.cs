@@ -8,11 +8,19 @@ namespace E_Library.Models
         {
         }
 
-        public DbSet<Subjects> Subjects { get; set; }
-        public DbSet<Documents> Documents { get; set; }
-        public DbSet<Exams> Exams { get; set; }
-        public DbSet<Questions> Questions { get; set; }
-        public DbSet<Answers> Answers { get; set; }
-        public DbSet<PrivateFiles> PrivateFiles { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<Exam> Exams { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<PrivateFile> PrivateFiles { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserRole>().HasKey(x => new { x.UserId, x.RoleId });
+        }
     }
 }
