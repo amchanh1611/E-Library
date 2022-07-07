@@ -125,6 +125,63 @@ namespace E_Library.Models.Migrations
                     b.ToTable("Exams");
                 });
 
+            modelBuilder.Entity("E_Library.Models.OTP", b =>
+                {
+                    b.Property<int>("OTPId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OTPId"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OTPValue")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OTPId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OTPs");
+                });
+
+            modelBuilder.Entity("E_Library.Models.Permisstion", b =>
+                {
+                    b.Property<int>("PermisstionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PermisstionId"), 1L, 1);
+
+                    b.Property<int>("PermisstionName")
+                        .HasColumnType("int");
+
+                    b.HasKey("PermisstionId");
+
+                    b.ToTable("Permisstions");
+                });
+
+            modelBuilder.Entity("E_Library.Models.PermistionRole", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PermisstionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RoleId", "PermisstionId");
+
+                    b.HasIndex("PermisstionId");
+
+                    b.ToTable("PermisstionRoles");
+                });
+
             modelBuilder.Entity("E_Library.Models.PrivateFile", b =>
                 {
                     b.Property<int>("PrivateFileId")
@@ -187,7 +244,7 @@ namespace E_Library.Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"), 1L, 1);
 
-                    b.Property<int?>("RoleName")
+                    b.Property<int>("RoleName")
                         .HasColumnType("int");
 
                     b.HasKey("RoleId");
@@ -238,16 +295,27 @@ namespace E_Library.Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("LoginName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Password")
                         .HasColumnType("int");
 
+                    b.Property<string>("SDT")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
 
                     b.ToTable("Users");
                 });
@@ -294,6 +362,36 @@ namespace E_Library.Models.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("E_Library.Models.OTP", b =>
+                {
+                    b.HasOne("E_Library.Models.User", "User")
+                        .WithMany("OTPs")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("E_Library.Models.PermistionRole", b =>
+                {
+                    b.HasOne("E_Library.Models.Permisstion", "Permisstion")
+                        .WithMany("PermisstionRoles")
+                        .HasForeignKey("PermisstionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Library.Models.Role", "Role")
+                        .WithMany("PermistionRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permisstion");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("E_Library.Models.Question", b =>
                 {
                     b.HasOne("E_Library.Models.Exam", "Exam")
@@ -327,6 +425,11 @@ namespace E_Library.Models.Migrations
                     b.Navigation("Questions");
                 });
 
+            modelBuilder.Entity("E_Library.Models.Permisstion", b =>
+                {
+                    b.Navigation("PermisstionRoles");
+                });
+
             modelBuilder.Entity("E_Library.Models.Question", b =>
                 {
                     b.Navigation("Answers");
@@ -334,6 +437,8 @@ namespace E_Library.Models.Migrations
 
             modelBuilder.Entity("E_Library.Models.Role", b =>
                 {
+                    b.Navigation("PermistionRoles");
+
                     b.Navigation("UserRoles");
                 });
 
@@ -346,6 +451,8 @@ namespace E_Library.Models.Migrations
 
             modelBuilder.Entity("E_Library.Models.User", b =>
                 {
+                    b.Navigation("OTPs");
+
                     b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618

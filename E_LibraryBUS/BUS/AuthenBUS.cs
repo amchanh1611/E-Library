@@ -21,17 +21,38 @@ namespace E_Library.BUS.BUS
             return _authenRepository.CreateNewUser(infoUser.Password, infoUser.LoginName, infoUser.UserName);
         }
 
-        public UserRoleDTO GetUserById(int id)
+        public int ForgotPassword(string email)
         {
-            var user = _authenRepository.GetUserById(id);
-            return new UserRoleDTO { LoginName = user.LoginName, UserName = user.UserName,Password=user.Password,UserId=user.UserId,RoleId=user.UserRoles.Select(s=>s.RoleId).First() };
+            var user = _authenRepository.GetUserByEmail(email);
+            if (user == null)
+                return 0;
+            var lstOTPOfUser = _authenRepository.CheckTheNumberOTPCreated(user.UserId, DateTime.Now);
+            if (lstOTPOfUser > 2)
+                return 0;
+            Random oTP = new Random();
+            var oTPValue = oTP.Next(1000, 9999);
+            _authenRepository.CreateOTP(new OTPDTO { OTPValue = oTPValue, CreateDate = DateTime.Now, UserId = user.UserId });
+            return oTPValue;
         }
 
         public LoginResponeDTO Login(LoginDTO login)
         {
-            var user = _authenRepository.Login(login.Password,login.LoginName);
+            var user = _authenRepository.Login(login.Password, login.LoginName);
+
+            if (user == null)
+                return null;
+
             var token = _jwtUtils.GenerateJwtToken(user);
-            return new LoginResponeDTO { User = new UserDTO { LoginName = user.LoginName, Password = user.Password,UserName=user.UserName },Token = token};
+            return new LoginResponeDTO { User = new UserDTO { LoginName = user.LoginName, Password = user.Password, UserName = user.UserName }, Token = token };
+        }
+
+        public bool ValidateOTP(string oTP)
+        {
+            var otp = _authenRepository.GetOTPByValue(oTP);
+            var time = DateTime.Now.Subtract(otp.CreateDate);
+            if (time.Minutes < 2)
+                return true;
+            return false;
         }
     }
 }

@@ -11,7 +11,11 @@ namespace E_Library.Models
         public string? LoginName { get; set; }
         public int? Password { get; set; }
         public string? UserName { get; set; }
+        public string? Email { get; set; }
+        [MaxLength(11)]
+        public string? SDT { get; set; }
 
         public ICollection<UserRole> UserRoles { get; set; }
+        public ICollection<OTP> OTPs { get; set; }
     }
 }

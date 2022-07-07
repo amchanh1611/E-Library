@@ -16,6 +16,7 @@ namespace E_Library.Controllers
             _homeBUS = getTotalExamBUS;
         }
 
+        [Authorize(Permisstions.View)]
         [HttpGet("HomeSubject")]
         public ActionResult GetTolalSubject()
         {
@@ -26,7 +27,8 @@ namespace E_Library.Controllers
             }
             return BadRequest("Khong truy van duoc du lieu trong DB");
         }
-        [Authorize(Roles.Admin)]
+
+        [Authorize(Permisstions.Edit)]
         [HttpGet("HomeExam")]
         public ActionResult GetTotalExam()
         {

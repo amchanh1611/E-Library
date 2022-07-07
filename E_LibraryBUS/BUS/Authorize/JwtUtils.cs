@@ -20,9 +20,10 @@ namespace E_Library.BUS.BUS
         
 
         public string GenerateJwtToken(User user)
-        { // generate token that is valid for 7 days
+        {
+            // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(/*"This is my secrect"*/_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("UserId", user.UserId.ToString()),new Claim("UserName", user.UserName.ToString()) }),

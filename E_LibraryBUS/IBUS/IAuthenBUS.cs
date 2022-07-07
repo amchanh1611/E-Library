@@ -8,6 +8,7 @@ namespace E_Library.BUS.IBUS
         public bool CreateNewUser(UserDTO infoUser);
 
         public LoginResponeDTO Login(LoginDTO login);
-        public UserRoleDTO GetUserById(int id);
+        public int ForgotPassword(string email);
+        public bool ValidateOTP(string oTP);
     }
 }

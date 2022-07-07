@@ -10,17 +10,13 @@ namespace E_Library.BUS.BUS.Authorize
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     {
-        //private readonly IList<Role> _roles;
-        private readonly IList<Roles> _roles;
+        private readonly IList<Permisstions> _permisstions;
 
-        public AuthorizeAttribute(params Roles[] roles)
+        public AuthorizeAttribute(params Permisstions[] permisstions)
         {
-            _roles = roles ?? new Roles[] { };
+            _permisstions = permisstions ?? new Permisstions[] { };
         }
-        //public AuthorizeAttribute(params Role[] roles)
-        //{
-        //    _roles = roles ?? new Role[] { };
-        //}
+
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             // skip authorization if action is decorated with [AllowAnonymous] attribute
@@ -30,9 +26,20 @@ namespace E_Library.BUS.BUS.Authorize
 
             // authorization
             var user = (User)context.HttpContext.Items["User"];
-            if (user == null || (_roles.Any() && !_roles.Contains(user.UserRoles.Select(s => s.Role.RoleName).ToList())))
+            List<Permisstions> permisstions = new List<Permisstions>();
+            List<Role> roles = user.UserRoles.Select(s => s.Role).ToList();
+            foreach (var role in roles)
             {
-                // not logged in or role not authorized
+                var permisstionRoles = role.PermistionRoles.Select(s => s.Permisstion.PermisstionName).ToList();
+                foreach (var permisstion in permisstionRoles)
+                {
+                    permisstions.Add(permisstion);
+                }
+            }
+
+            if (user == null || (_permisstions.Any() && !_permisstions.Intersect(permisstions).Any())) 
+            {
+                //not logged in or role not authorized
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
             }
         }

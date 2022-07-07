@@ -9,7 +9,9 @@ namespace E_Library.Models
     {
         [Key]
         public int RoleId { get; set; }
-        public Roles? RoleName { get; set; }
+
+        public Roles RoleName { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
+        public ICollection<PermistionRole> PermistionRoles { get; set; }
     }
 }
